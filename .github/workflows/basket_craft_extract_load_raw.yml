@@ -1,0 +1,42 @@
+name: Run Basket Craft Extract and Load to Raw
+
+on: 
+    schedule: 
+        - cron: '*/15 * * * *' #every 15 min    
+    workflow_dispatch:         #optional manual trigger
+
+env: 
+    MYSQL_USER:    ${{ secrets.MYSQL_USER }}
+    MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+    MYSQL_HOST:    ${{ secrets.MYSQL_HOST }}
+    MYSQL_DB:      ${{ secrets.MYSQL_DB }}
+    PG_USER:       ${{ secrets.PG_USER }}
+    PG_PASSWORD:   ${{ secrets.PG_PASSWORD }}
+    PG_HOST:       ${{ secrets.PG_HOST }}
+    PG_DB:         ${{ secrets.PG_DB }}
+
+jobs:
+    extract_load:
+        name: Extract and Load Raw Basket Craft Data to a Raw Schema
+        runs-on: ubuntu_latest
+
+        steps:
+            - name: Check out code
+              uses: actions/checkout@v3
+
+            - name: Set up python
+              uses: actions/setup-python@v4
+              with: 
+                python-version: '3.11'
+            
+            - name: Install python dependencies
+              run: |
+                pip install -r requirements.txt
+
+            - name: Extract and load products to raw schema
+              run: | 
+                python elt/basket_craft_products_extract_load_raw.py
+            
+            - name: Extract and load orders to raw schema
+              run: | 
+                python elt/basket_craft_orders_extract_load_raw.py
