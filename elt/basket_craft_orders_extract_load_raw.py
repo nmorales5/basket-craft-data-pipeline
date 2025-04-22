@@ -39,13 +39,13 @@ pg_conn_str = f'postgresql+psycopg2://{pg_user}:{pg_password}@{pg_host}/{pg_db}'
 mysql_engine = create_engine(mysql_conn_str)
 pg_engine = create_engine(pg_conn_str)
 # %%
-# read products table from MySQL
-df = pd.read_sql('SELECT * FROM products', mysql_engine)
+# read orders table from MySQL
+df = pd.read_sql('SELECT * FROM orders', mysql_engine)
 # %%
 #df
 # %%
 # Write Dataframe to products table in Postgres
-df.to_sql('products', pg_engine, schema = 'raw', if_exists='replace', index=False)
+df.to_sql('orders', pg_engine, schema = 'raw', if_exists='replace', index=False)
 # %%
-print(f'{len(df)} records loaded into Postgres products table.')
+print(f'{len(df)} records loaded into Postgres orders table.')
 # %%
