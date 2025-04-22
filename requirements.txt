@@ -2,3 +2,4 @@ sqlalchemy
 pandas
 pymysql
 psycopg2-binary
+dotenv
