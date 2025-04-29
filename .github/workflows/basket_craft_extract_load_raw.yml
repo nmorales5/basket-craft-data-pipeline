@@ -1,9 +1,9 @@
 name: Run Basket Craft Extract and Load to Raw
 
-# on:
-#   schedule:
-#     - cron: '*/15 * * * *' # runs every 15 minutes
-#   workflow_dispatch:       # optional manual trigger
+on:
+  schedule:
+    - cron: '*/15 * * * *' # runs every 15 minutes
+  workflow_dispatch:       # optional manual trigger
 
 env:
   MYSQL_USER:    ${{ secrets.MYSQL_USER }}

@@ -15,4 +15,19 @@ sources:
          - name: created_at
          - name: description
          - name: product_name
+
+     - name: orders
+       columns:
+        - name: order_id
+          description: Primary key for orders
+          tests:
+              - unique
+              - not_null
+        - name: created_at
+        - name: cogs_usd
+        - name: items_purchased
+        - name: price_usd 
+        - name: primary_product_id
+        - name: user_id
+        - name: website_session_id
  
