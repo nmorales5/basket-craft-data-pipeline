@@ -4,5 +4,7 @@ This repository contains a full data pipeline that analyzes website session data
 
 ## 📌 Data Pipeline Diagram
 
-![Data Pipeline](Basket_Craft_DBT.drawio.png)
+![Data Pipeline](../Basket_Craft_DBT.drawio.png)
+
+
 
