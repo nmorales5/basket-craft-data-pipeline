@@ -45,7 +45,12 @@ df = pd.read_sql('SELECT * FROM products', mysql_engine)
 #df
 # %%
 # Write Dataframe to products table in Postgres
-df.to_sql('products', pg_engine, schema = 'raw', if_exists='replace', index=False)
+# Truncate the table without dropping it
+with pg_engine.begin() as conn:
+    conn.execute("TRUNCATE TABLE raw.products")
+
+# Insert new data
+df.to_sql('products', pg_engine, schema='raw', if_exists='append', index=False)
 # %%
 print(f'{len(df)} records loaded into Postgres products table.')
 # %%
