@@ -6,6 +6,11 @@ This repository contains a full data pipeline that analyzes website session data
 
 ![Data Pipeline](Basket_Craft_DBT.drawio.png)
 
+## 📊 Dashboard
+
+[View Looker Studio Dashboard (Unlisted)](https://lookerstudio.google.com/reporting/fff0e535-172f-455e-896c-535aa704d553)
+
+
 
 
 
