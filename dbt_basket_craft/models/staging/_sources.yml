@@ -1,33 +1,46 @@
 version: 2
 
 sources:
- - name: basket_craft
-   database: basket_craft
-   schema: raw
-   tables:
-     - name: products
-       columns:
-         - name: product_id
-           description: Primary key for products
-           tests:
-             - unique
-             - not_null
-         - name: created_at
-         - name: description
-         - name: product_name
-
-     - name: orders
-       columns:
-        - name: order_id
-          description: Primary key for orders
-          tests:
+  - name: basket_craft
+    database: basket_craft
+    schema: raw
+    tables:
+      - name: products
+        columns:
+          - name: product_id
+            description: Primary key for products
+            tests:
               - unique
               - not_null
-        - name: created_at
-        - name: cogs_usd
-        - name: items_purchased
-        - name: price_usd 
-        - name: primary_product_id
-        - name: user_id
-        - name: website_session_id
- 
+          - name: created_at
+          - name: description
+          - name: product_name
+
+      - name: orders
+        columns:
+          - name: order_id
+            description: Primary key for orders
+            tests:
+              - unique
+              - not_null
+          - name: created_at
+          - name: cogs_usd
+          - name: items_purchased
+          - name: price_usd 
+          - name: primary_product_id
+          - name: user_id
+          - name: website_session_id
+
+      - name: website_sessions
+        columns:
+          - name: website_session_id
+            description: Primary key for website sessions
+            tests:
+              - unique
+              - not_null
+          - name: created_at
+          - name: user_id
+          - name: utm_source
+          - name: utm_campaign
+          - name: device_type
+          - name: is_repeat_session
