@@ -45,7 +45,12 @@ df = pd.read_sql('SELECT * FROM orders', mysql_engine)
 #df
 # %%
 # Write Dataframe to products table in Postgres
-df.to_sql('orders', pg_engine, schema = 'raw', if_exists='replace', index=False)
+from sqlalchemy import text
+
+with pg_engine.begin() as conn:
+    conn.execute(text("TRUNCATE TABLE raw.orders"))
+
+df.to_sql('orders', pg_engine, schema='raw', if_exists='append', index=False)
 # %%
 print(f'{len(df)} records loaded into Postgres orders table.')
 # %%
